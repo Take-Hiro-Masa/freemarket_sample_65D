@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_01_03_073001) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id"
     t.bigint "condition_id", null: false
@@ -52,7 +51,6 @@ ActiveRecord::Schema.define(version: 2020_01_03_073001) do
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
     t.index ["shippingday_id"], name: "index_items_on_shippingday_id"
     t.index ["shippingfee_id"], name: "index_items_on_shippingfee_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

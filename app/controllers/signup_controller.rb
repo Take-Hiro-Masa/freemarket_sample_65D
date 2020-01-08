@@ -78,8 +78,7 @@ class SignupController < ApplicationController
 
     if @user.save
       session[:id] = @user.id
-      redirect_to  root_path
-      sign_in User.find(session[:id])
+      redirect_to root_path
     else
       render '/signup/step1'
     end
