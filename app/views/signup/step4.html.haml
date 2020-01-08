@@ -5,7 +5,7 @@
     .signup__address__title
       住所入力
     
-    = form_with model: @user, local: true, url: step6_signup_index_path, class: 'signup__address__box', method: 'GET' do |f|
+    = form_with model: @user, local: true, url: signup_index_path, class: 'signup__address__box', method: 'POST' do |f|
       .signup__address__box__input
 
         .field          
