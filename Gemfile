@@ -83,6 +83,10 @@ gem 'devise'
 #画像送信
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
+
+#画像をアップロードする際,AWSに最適化アップロードするのを補助
+gem 'fog-aws'
 
 #データベースに保存しないもの 都道府県やカテゴリーなど
 gem 'active_hash'
