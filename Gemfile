@@ -93,3 +93,5 @@ gem 'pry-rails'
 # クレジットカード決済
 gem 'payjp'
 
+#パンくず
+gem "gretel"
