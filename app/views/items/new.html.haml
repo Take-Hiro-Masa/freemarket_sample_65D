@@ -4,7 +4,7 @@
   .contents-box
     %section.contents-box__sell-container
       商品の情報を入力
-    = form_with model: @item, class: 'contents-box__form-list' do |f|
+    = form_with model: @item, class: 'contents-box__form-list', local: true do |f|
       -# 画像アップロード部分
       %section.contents-box__form-list__upload-box
         .contents-box__form-list__upload-box__image-text
@@ -20,7 +20,10 @@
               = f.label :images, for: 'upload-image__btn' do
                 .sell_upload__area
                   = f.file_field :images, multiple: true, id: 'upload-image__btn', class: 'upload-image', 'data-image': 0, style: 'opacity: 0'
-
+                  %pre.sell-upload__area___visible-pc
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
+                  %i.fas.fa-camera 
       -# 商品名、商品説明入力部分
       %section.contents-box__descript-section
         .contents-box__descript-section__item-name
@@ -47,7 +50,7 @@
             カテゴリー
             .form-require
               必須
-            = f.collection_select :category_id, Category.all, :id, :name, { prompt: '--' }, class: 'sell-main__select-default', id: 'sell-main__select-category--main'
+            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: '未選択'},  {class: 'category'} 
           .contents-box__category-section__category-box__tag#size
             -#サイズ
           -# プルダウンにしてるけど、本当はインクリメンタルサーチ
@@ -69,7 +72,6 @@
           配送について
           =link_to "#", class: "contents-box__category-section__sub-head__icon" do
             %i.fas.fa-question-circle
-            
         .contents-box__category-section__category-box
           .contents-box__category-section__category-box__tag#async-select-box2
             配送料の負担
@@ -88,14 +90,12 @@
             .form-require
               必須
             = f.collection_select :shippingday_id, Shippingday.all, :id, :name, {include_blank: '未選択'},{class: "category"}
-      
       -# 販売価格、手数料の表示 
       %section.contents-box__category-section#exhibit-selling-price
         %h3.contents-box__category-section__sub-head
           販売価格(300~9,999,999)
           =link_to "#", class: "contents-box__category-section__sub-head__icon" do
             %i.fas.fa-question-circle
-            
         .contents-box__price-section
           .contents-box__price-section__price-box-left
             .contents-box__price-section__price-box-left__text
@@ -107,7 +107,6 @@
               ¥
             = f.text_field :price, id: 'sell_center', class:'contents-box__price-section__price-box-right__price-form', placeholder: '例)300'
           .contents-box__price-section__border
-
           .contents-box__price-section__fee-left
             販売手数料(10%)
           .contents-box__price-section__fee-right
@@ -119,7 +118,6 @@
               販売利益
             .contents-box__price-section__result-right
               .contents-box__price-section__result-right.sales-profit -
-        
       %section.contents-box__sell-decision-container
         %p.contents-box__sell-decision-container__note
           禁止されている出品、行為を必ずご確認ください。
@@ -127,9 +125,7 @@
           またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
         %p.contents-box__sell-decision-container__note
           また、出品をもちまして加盟店規約に同意したことになります。
-        -# submitすることで、DBへデータが入り、トップページに繊維する流れ ys
-        = f.submit nil, class: 'btn btn-primary btn-red' , value: "出品する" do
-          出品する
+        = f.submit class: 'btn btn-primary btn-red', value: "出品する" 
         = link_to root_path, class:'btn-default btn-gray' do
           もどる
 =render "signup/footer"
