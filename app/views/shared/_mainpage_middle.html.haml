@@ -110,7 +110,7 @@
                 .toppage-main__item-name
                   %span= item.name
               
-  =link_to new_item_path, class: 'exhibit_btn' do
+  =link_to new_item_path(@user), class: 'exhibit_btn' do
     .exhibit_btn__moji
       出品
     %i.fas.fa-camera

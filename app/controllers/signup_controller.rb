@@ -81,7 +81,7 @@ class SignupController < ApplicationController
       sign_in User.find(session[:id])
       redirect_to new_card_path
     else
-      render '/signup'
+      render 'step2'
     end
   end
 
@@ -117,7 +117,6 @@ private
       :birth_mm_id,
       :birth_dd_id,
       :phone_tel,
-      :authentication_number,
       :postal_code,
       :prefecture_id,
       :city,
