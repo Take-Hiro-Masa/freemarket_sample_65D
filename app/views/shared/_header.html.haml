@@ -19,7 +19,7 @@
                 カテゴリーから探す
 
         .header__main__bottom__nav__brand
-          =link_to '#', id: 'brand-list-box'do
+          =link_to destroy_user_session_path, method: 'delete', id: 'brand-list-box'do
             %i.fas.fa-tags.header__main__bottom__nav__brand__icon
               .header__main__bottom__nav__brand__icon__text
                 ブランドから探す
@@ -50,7 +50,7 @@
       - else
         .header__main__bottom__user
           .header__main__bottom__user__register-button
-            =link_to step1_signup_index_path, class:"header__main__bottom__user__register-button__text" do
+            =link_to signup_index_path, class:"header__main__bottom__user__register-button__text" do
               新規会員登録
           .header__bottom__user__login-button
             =link_to '#',  class:"header__main__bottom__user__login-button__text" do

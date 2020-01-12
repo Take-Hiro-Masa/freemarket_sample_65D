@@ -1,5 +1,5 @@
 class SignupController < ApplicationController
-  def step1
+  def index
     @user = User.new
   end
 
@@ -78,10 +78,10 @@ class SignupController < ApplicationController
 
     if @user.save
       session[:id] = @user.id
-      redirect_to root_path
       sign_in User.find(session[:id])
+      redirect_to new_card_path
     else
-      render '/signup/step1'
+      render '/signup'
     end
   end
 

@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root "items#index"
   resources :signup, only: [:index, :create] do
     collection do
-      get "step1"
       get "step2"
       get "step3"
       get "step4"
@@ -12,6 +11,8 @@ Rails.application.routes.draw do
       get "step6"  
     end
   end
+
+  resources :cards, only: [:new, :create, :show] 
 
   resources :items, only: [:index, :new, :create, :show]
 

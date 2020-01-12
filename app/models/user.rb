@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   # has_one :credit_card
   # has_one :image, dependent: :destroy
   # has_many :items, dependent: :destroy
@@ -10,9 +12,9 @@ class User < ApplicationRecord
   belongs_to_active_hash :birth_mm
   belongs_to_active_hash :birth_yyyy
   belongs_to_active_hash :prefecture
+  has_many :cards
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  
   
 #   VALID_KANA_NAME_REGEX = /\A[ァ-ヶー－]+\z/
   
