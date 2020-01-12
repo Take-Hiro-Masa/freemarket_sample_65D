@@ -101,3 +101,7 @@ gem 'payjp'
 
 #payjp key管理
 gem 'dotenv-rails'
+
+#パンくず
+gem "gretel"
+
