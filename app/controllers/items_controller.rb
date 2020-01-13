@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:set_user, :show, :destroy]
+  before_action :set_item, only: [:set_user, :edit, :update, :show, :destroy]
   before_action :set_user, only: [:show, :destory]
  
 
@@ -18,6 +18,19 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render 'items/new'
+    end
+  end
+
+
+  def edit
+  end
+
+  def update
+    if @item.user_id == current_user.id
+      @item.update(item_params)
+      redirect_to root_path
+    else
+      render 'edit'
     end
   end
 

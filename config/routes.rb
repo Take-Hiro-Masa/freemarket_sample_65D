@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :items, only: [:index, :new, :create, :show, :destroy]
+  resources :items
 
   resources :mypage, only: [:index] do
     collection do
