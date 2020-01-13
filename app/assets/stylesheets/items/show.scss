@@ -303,3 +303,47 @@
 #itembuy-price-box__decoration{
   text-decoration: none;
 }
+
+.product-buy-btn {
+  background: #e62017;
+  cursor: not-allowed;
+  margin: 16px 0 0;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+}
+.product-edit-btn {
+  background: #aaa;
+  cursor: not-allowed;
+  margin: 14px 0 0;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  height: 60px;
+  line-height: 60px;
+}
+.product-stop-btn {
+  background: #aaa;
+  cursor: not-allowed;
+  margin: 14px 0 0;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.product-buy-btn-sold {
+  background: #888;
+  cursor: not-allowed;
+  margin: 16px 0 0;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+}

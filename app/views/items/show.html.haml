@@ -52,7 +52,6 @@
           %th 配送の方法
           %td
             ゆうゆうメルカリ便
-          -#   = @item.shippingmethod.name
         %tr
           %th 配送元地域
           %td
@@ -72,30 +71,43 @@
       送料込み
     - else
       着払い
-    
-    = link_to '購入画面に進む', "#" , class: 'itembuy-price-box', id: 'itembuy-price-box__decoration'
-  -# - if not user_signed_in?
-    -# = link_to '購入画面に進む', class: 'itembuy-price-box', id: 'itembuy-price-box__decoration'
-  -# - elsif @item.condition_id == 1 && @item.user_id == current_user.id
-    -# .itembuy-price-box__none{ id: 'itembuy-price-box__decoration'} 購入画面に進む
-  -# - elsif @item.condition_id == 4
-  -#   .itembuy-price-box__none{ id: 'itembuy-price-box__decoration'} 購入画面に進む
-  -# - else
-    -# = link_to '購入画面に進む', class: 'itembuy-price-box', id: 'itembuy-price-box__decoration'
-  .itembuy-detail
-    %p.itembuy-detail__inner
-      = @item.description
-  .itembuy-button
-    .itembuy-button__left
-      %button{ type: 'button', name: 'like!', class: 'i far fa-heart' }
-        %span いいね! 22
-      = link_to '/' do
-        %i.far.fa-flag
-          %span 不適切な商品の報告
-    .itembuy-button__right
-      = link_to '/' do
-        %i.fas.fa-shopping-bag
-          %span あんしん・あんぜんへの取り組み
+    -if user_signed_in?
+      -if @item.user_id == current_user.id
+        = link_to "#" do
+          .product-edit-btn 
+            商品の編集
+          .product-btn-or 
+            or
+          .product-stop-btn 
+            出品を一旦停止する
+        = link_to "#", method: :delete do
+          .product-stop-btn 
+            この商品を削除する   
+      -else 
+        -if @item.status_id == 0
+          = link_to confirmation_purchase_path(@item) do
+            .product-buy-btn 
+              購入画面に進む
+        -else
+          .product-buy-btn-sold 
+            売り切れました
+    -else
+      redirect_to signup_index_path
+    -unless user_signed_in? && @item.user_id == current_user.id  
+      .itembuy-detail
+        %p.itembuy-detail__inner
+          = @item.description
+      .itembuy-button
+        .itembuy-button__left
+          %button{ type: 'button', name: 'like!', class: 'i far fa-heart' }
+            %span いいね! 22
+          = link_to '/' do
+            %i.far.fa-flag
+              %span 不適切な商品の報告
+        .itembuy-button__right
+          = link_to '/' do
+            %i.fas.fa-shopping-bag
+              %span あんしん・あんぜんへの取り組み
 .itembuy-content-box
   .itembuy-detail-message
     .itembuy-content__comment
@@ -124,9 +136,6 @@
     %li
       = link_to '/' do
         %i.fab.fa-twitter-square
-    %li
-      = link_to '/' do
-        %i.fab.fa-line
     %li
       = link_to '/' do
         %i.fab.fa-pinterest-square
