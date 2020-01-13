@@ -24,7 +24,7 @@
               .buy-price-table__right
                 ¥
                 = @item.price
-            = form_tag(purchase_pay_path(@item) , method: :post) do
+            = form_tag(pay_purchase_path(@item) , method: :post) do
               %button.btn-default
                 購入する
       .buy-content__user-info

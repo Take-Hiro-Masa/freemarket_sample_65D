@@ -85,7 +85,7 @@
             この商品を削除する   
       -else 
         -if @item.status_id == 0
-          = link_to purchase_path(@item) do
+          = link_to confirmation_purchase_path(@item) do
             .product-buy-btn 
               購入画面に進む
         -else
