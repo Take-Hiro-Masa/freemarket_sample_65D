@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:set_user, :show, :destroy]
+  before_action :set_user, only: [:show, :destory]
+ 
 
   def index
     @items = Item.limit(10).order('created_at DESC')
@@ -22,6 +24,10 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def destroy
+    @item.destroy if @item.user_id == current_user.id
+    redirect_to items_path
+  end
 
 private
 
@@ -38,6 +44,11 @@ private
       :price,
       images: []
     ).merge(user_id: current_user.id)
+  end
+
+  # ユーザー情報
+  def set_user
+    @user = User.find(@item.user_id)
   end
   
   # 商品情報

@@ -4,7 +4,7 @@
   .contents-box
     %section.contents-box__sell-container
       商品の情報を入力
-    = form_with model: @item, class: 'contents-box__form-list', local: true do |f|
+    = form_with model: @item, class: 'contents-box__form-list', local:　true do |f|
       -# 画像アップロード部分
       %section.contents-box__form-list__upload-box
         .contents-box__form-list__upload-box__image-text
@@ -72,6 +72,7 @@
           配送について
           =link_to "#", class: "contents-box__category-section__sub-head__icon" do
             %i.fas.fa-question-circle
+            
         .contents-box__category-section__category-box
           .contents-box__category-section__category-box__tag#async-select-box2
             配送料の負担
