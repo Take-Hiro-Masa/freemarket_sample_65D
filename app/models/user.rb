@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -7,6 +6,7 @@ class User < ApplicationRecord
   belongs_to_active_hash :birth_mm
   belongs_to_active_hash :birth_yyyy
   belongs_to_active_hash :prefecture
+  has_many :items
   has_many :cards
 
 end
