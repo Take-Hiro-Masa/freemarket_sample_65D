@@ -20,15 +20,7 @@ class ApplicationController < ActionController::Base
                       :birth_yyyy_id,
                       :birth_mm_id,
                       :birth_dd_id,
-                      :phone_tel,
-                      # :authentication_number,
-                      # :postal_code,
-                      # :prefecture,
-                      # :city,
-                      # :block,
-                      # :building,
-                      # :building_tel,
-                      # :profile
+                      :phone_tel
                     ]
       devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
       devise_parameter_sanitizer.permit :sign_in, keys: added_attrs

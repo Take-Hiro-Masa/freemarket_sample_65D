@@ -44,9 +44,4 @@ private
   def set_item
     @item = Item.find(params[:id])
   end
-
-  # # ユーザー情報
-  # def set_user
-  #   @user = User.find(@item.user_id)
-  # end
 end
