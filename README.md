@@ -1,4 +1,6 @@
-## usersテーブル
+
+## usersテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
@@ -22,13 +24,15 @@
 |profile|text||
 
 ### アソシエーション
-has_one :credit_card
-has_one :image
-has_many :items, dependent: :destroy
-has_many :comments, dependent: :destroy
-has_many :likes, dependent: :destroy
+
+- has_one :credit_card
+- has_one :image
+- has_many :items, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
 
 ## credit_cardsテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
@@ -37,9 +41,11 @@ has_many :likes, dependent: :destroy
 |security_code|integer|null: false,unique: true|
 
 ### アソシエーション
-belongs_to :user
+
+- belongs_to :user
 
 ## itemsテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |user_id|bigint|null: false, foreign_key: true, index: true|
@@ -55,42 +61,48 @@ belongs_to :user
 |price|integer|null: false|
 
 ### アソシエーション
-belongs_to :user
-has_many :images, dependent: :destroy
-has_many :comments, dependent: :destroy
-belongs_to :brand
-belongs_to :category
-has_many :likes, dependent: :destroy
+
+- belongs_to :user
+- has_many :images, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- belongs_to :brand
+- belongs_to :category
+- has_many :likes, dependent: :destroy
 
 ## imagesテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |item_id|bigint|null: false, foreign_key: true, index: true|
 |item_image|string|null: false|
 
 ### アソシエーション
-belongs_to :item
-belongs_to :user
+
+- belongs_to :item
+- belongs_to :user
 
 ## categoriesテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |category_name|string|null: false|
 
 ### アソシエーション
 
-has_many :items, dependent: :destroy
+- has_many :items, dependent: :destroy
 
 ## brandsテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |brand_name|string|null: false|
 
 ### アソシエーション
 
-has_many :items, dependent: :destroy
+- has_many :items, dependent: :destroy
 
 ## commentsテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
@@ -99,10 +111,11 @@ has_many :items, dependent: :destroy
 
 ### アソシエーション
 
-belongs_to :user
-belongs_to :item
+- belongs_to :user
+- belongs_to :item
 
 ## likesテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true, index: true|
@@ -110,5 +123,5 @@ belongs_to :item
 
 ### アソシエーション
 
-belongs_to :user
-belongs_to :item
+- belongs_to :user
+- belongs_to :item
