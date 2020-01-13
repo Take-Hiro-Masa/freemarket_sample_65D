@@ -29,9 +29,9 @@
 - has_one :image
 - has_many :items, dependent: :destroy
 - has_many :comments, dependent: :destroy
-- has_many :likes, dependent: :destroy
+- has_many :likes, dependent: :destroy 
 
-## credit_cardsテーブル
+## credit_cardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -44,7 +44,7 @@
 
 - belongs_to :user
 
-## itemsテーブル
+## itemsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -81,7 +81,7 @@
 - belongs_to :item
 - belongs_to :user
 
-## categoriesテーブル
+## categoriesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -91,7 +91,7 @@
 
 - has_many :items, dependent: :destroy
 
-## brandsテーブル
+## brandsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -101,7 +101,7 @@
 
 - has_many :items, dependent: :destroy
 
-## commentsテーブル
+## commentsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
