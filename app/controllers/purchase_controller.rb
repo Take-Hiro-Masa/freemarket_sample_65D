@@ -20,10 +20,9 @@ before_action :full_name, only: [:confirmation, :done]
   end
 
   def pay
-    card = Card.find_by(user_id: current_user.id)
     Payjp::Charge.create(
     amount: @item.price, #支払金額
-    customer: card.customer_id, #顧客ID
+    customer: @card.customer_id, #顧客ID
     currency: 'jpy', #日本円
     )
     @item.update(status_id: 4)
@@ -32,12 +31,11 @@ before_action :full_name, only: [:confirmation, :done]
 
   #購入完了
   def done
-    card = Card.find_by(user_id: current_user.id)
-    if card.blank?
+    if @card.blank?
       redirect_to action: "new" 
     else
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
     end
   end
 
