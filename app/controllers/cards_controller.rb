@@ -26,6 +26,8 @@ class CardsController < ApplicationController
     end
   end
 
+
+
   # def delete 
   #   card = Card.where(user_id: current_user.id).first
   #   if card.blank?
@@ -37,13 +39,5 @@ class CardsController < ApplicationController
   #     redirect_to action: "new"
   # end
 
-  def show
-    card = Card.find_by(user_id: current_user.id)
-    if card.blank?
-      redirect_to action: "new" 
-    else
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
-    end
-  end
+
 end
