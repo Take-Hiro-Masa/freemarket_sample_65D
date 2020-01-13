@@ -100,7 +100,7 @@ class SignupController < ApplicationController
   end
 
   def step6
-    sign_in User.find(session[:id]) unless user_signed_in?
+    # sign_in User.find(session[:id]) unless user_signed_in?
   end
 
 private
