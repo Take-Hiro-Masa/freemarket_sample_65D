@@ -17,8 +17,8 @@
             = link_to root_path do
               .signin-main__conect__lists__facebook__btn
                 Facebookでログイン
-                %i.fbicon
-                
+                %i.fab.fa-facebook-square
+                  
           %li.signin-main__conect__lists__google2
             = link_to root_path do
               .signin-main__conect__lists__google2__btn
@@ -30,7 +30,6 @@
             = f.password_field :password, autocomplete: "new-password", class:'input_box2',placeholder:'パスワード'
           %li.signin-main__conect__lists
             .signin-main__conect__lists__reCAPTCHA
-              -# = recaptcha_tags
           .actions
             .actions__btn
               = f.submit 'ログイン', class: "submit_btn"
