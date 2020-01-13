@@ -8,6 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.bigint :shippingfee_id, null: false, foreign_key: true, index: true
       t.bigint :prefecture_id, null: false, foreign_key: true, index: true
       t.bigint :shippingday_id, null: false, foreign_key: true, index: true
+      t.integer :status_id, default: "0"
       t.timestamps
     end
   end

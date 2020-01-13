@@ -19,7 +19,7 @@
           %th 出品者
           %td
             = link_to '/' do
-              -# = @user.nickname
+              = @user.nickname
             %div
               .itembuy-user-ratings{ id: 'itembuy-icon-good' }
                 %i.fas.fa-smile
@@ -52,7 +52,6 @@
           %th 配送の方法
           %td
             ゆうゆうメルカリ便
-          -#   = @item.shippingmethod.name
         %tr
           %th 配送元地域
           %td
@@ -72,30 +71,43 @@
       送料込み
     - else
       着払い
-    
-    = link_to '購入画面に進む', "#" , class: 'itembuy-price-box', id: 'itembuy-price-box__decoration'
-  -# - if not user_signed_in?
-    -# = link_to '購入画面に進む', class: 'itembuy-price-box', id: 'itembuy-price-box__decoration'
-  -# - elsif @item.condition_id == 1 && @item.user_id == current_user.id
-    -# .itembuy-price-box__none{ id: 'itembuy-price-box__decoration'} 購入画面に進む
-  -# - elsif @item.condition_id == 4
-  -#   .itembuy-price-box__none{ id: 'itembuy-price-box__decoration'} 購入画面に進む
-  -# - else
-    -# = link_to '購入画面に進む', class: 'itembuy-price-box', id: 'itembuy-price-box__decoration'
-  .itembuy-detail
-    %p.itembuy-detail__inner
-      = @item.description
-  .itembuy-button
-    .itembuy-button__left
-      %button{ type: 'button', name: 'like!', class: 'i far fa-heart' }
-        %span いいね! 22
-      = link_to '/' do
-        %i.far.fa-flag
-          %span 不適切な商品の報告
-    .itembuy-button__right
-      = link_to '/' do
-        %i.fas.fa-shopping-bag
-          %span あんしん・あんぜんへの取り組み
+    -if user_signed_in?
+      -if @item.user_id == current_user.id
+        = link_to "#" do
+          .product-edit-btn 
+            商品の編集
+          .product-btn-or 
+            or
+          .product-stop-btn 
+            出品を一旦停止する
+        = link_to "#", method: :delete do
+          .product-stop-btn 
+            この商品を削除する   
+      -else 
+        -if @item.status_id == 0
+          = link_to confirmation_purchase_path(@item) do
+            .product-buy-btn 
+              購入画面に進む
+        -else
+          .product-buy-btn-sold 
+            売り切れました
+    -else
+      redirect_to signup_index_path
+    -unless user_signed_in? && @item.user_id == current_user.id  
+      .itembuy-detail
+        %p.itembuy-detail__inner
+          = @item.description
+      .itembuy-button
+        .itembuy-button__left
+          %button{ type: 'button', name: 'like!', class: 'i far fa-heart' }
+            %span いいね! 22
+          = link_to '/' do
+            %i.far.fa-flag
+              %span 不適切な商品の報告
+        .itembuy-button__right
+          = link_to '/' do
+            %i.fas.fa-shopping-bag
+              %span あんしん・あんぜんへの取り組み
 .itembuy-content-box
   .itembuy-detail-message
     .itembuy-content__comment
@@ -104,18 +116,6 @@
         %textarea
         %button
           %span コメントする
-    -# - if @next_product.present?
-    -#   %ul.itembuy-nav
-    -#     %li.itembuy-nav__left
-    -#       = link_to "#" do
-    -#         %i.fas.fa-chevron-left
-    -#         = @next_product.name
-    -# - if @prev_product.present?
-    -#   %ul.itembuy-nav
-    -#     %li.itembuy-nav__right
-    -#       = link_to "#" do
-    -#         = @prev_product.name
-    -#         %i.fas.fa-chevron-right
 .itembuy-media-box
   %ul.itembuy-media-box__list
     %li
@@ -126,26 +126,9 @@
         %i.fab.fa-twitter-square
     %li
       = link_to '/' do
-        %i.fab.fa-line
-    %li
-      = link_to '/' do
         %i.fab.fa-pinterest-square
 .itembuy-user-profile
   %section.itembuy-user-profile__box
   %h2.itembuy-user-profile__head
-    -# = link_to '/' do
-  -#     -# #{@user.nickname}さんのその他の出品
-  -# .itembuy-user-profile__content
-  -#   - @my_product.order('created_at DESC').limit(6).each do |my_product|
-  -#     .itembuy-user-profile__box
-  -#       %section.itembuy-user-profile__items
-  -#         = link_to "#" do
-  -#           = image_tag my_product.images[0], size: '220x220'
-  -#           .itembuy-user-profile__body
-  -#             %h3.itembuy-user-profile__name 
-  -#               = my_product.name
-  -#             .itembuy-user-profile__num
-  -#               .itembuy-user-profile__price
-  -#                 = my_product.jpy
 = render 'shared/aside'
 = render 'shared/footer'

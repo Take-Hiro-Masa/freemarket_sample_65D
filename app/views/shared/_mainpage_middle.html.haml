@@ -25,7 +25,8 @@
               = link_to item_path(item.id) do
                 .toppage-main__image
                   %span
-                    -# = item.jpy
+                    ¥
+                    = item.price
                   = image_tag item.images[0], size: '188x188'
                   -# -if item.condition_id == 4
                   -#   .pickup-content__red
@@ -49,7 +50,8 @@
               = link_to item_path(item.id) do
                 .toppage-main__image
                   %span
-                    -# = item.jpy
+                    ¥
+                    = item.price
                   = image_tag item.images[0], resize: '188x188'
                   -# -if item.condition_id == 4
                   -#   .pickup-content__red
@@ -73,7 +75,8 @@
               = link_to item_path(item.id) do
                 .toppage-main__image
                   %span
-                    -# = item.jpy
+                    ¥
+                    = item.price
                   = image_tag item.images[0], resize: '188x188'
                   -# -if item.condition_id == 4
                   -#   .pickup-content__red
@@ -97,7 +100,8 @@
               = link_to item_path(item.id) do
                 .toppage-main__image
                   %span
-                    -# = item.jpy
+                    ¥
+                    = item.price
                   = image_tag item.images[0], resize: '188x188'
                   -# -if item.status_id == 4
                   -#   .pickup-content__red
