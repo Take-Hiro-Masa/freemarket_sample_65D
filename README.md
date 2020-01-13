@@ -10,13 +10,12 @@
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|birth_yyyy|integer|null: false|
-|birth_mm|integer|null: false|
-|birth_dd|integer|null: false|
+|birth_yyyy_id|bigint|null: false, foreign_key: true, index: true|
+|birth_mm_id|bigint|null: false, foreign_key: true, index: true|
+|birth_dd_id|integer|null: false, foreign_key: true, index: true|
 |phone_tel|integer|null:  false, unique: true|
-|authentication_number|integer|null: false|
 |postal_code|integer|null: false|
-|prefecture|string|null: false|
+|prefecture_id|string|null: false, foreign_key: true, index: true|
 |city|string|null: false|
 |block|string|null: false|
 |building|string||
@@ -25,20 +24,20 @@
 
 ### アソシエーション
 
-- has_one :credit_card
-- has_one :image
+- belongs_to_active_hash :birth_dd
+- belongs_to_active_hash :birth_mm
+- belongs_to_active_hash :birth_yyyy
+- belongs_to_active_hash :prefecture
+- has_many :cards
 - has_many :items, dependent: :destroy
-- has_many :comments, dependent: :destroy
-- has_many :likes, dependent: :destroy 
 
-## credit_cardsテーブル
+## cardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true, index: true|
-|month|integer|null: false|
-|year|integer|null: false|
-|security_code|integer|null: false,unique: true|
+|user_id|bigint|null: false, foreign_key: true, index: true|
+|costomer_id|string|null: false|
+|card_id|string|null: false|
 
 ### アソシエーション
 
@@ -48,80 +47,86 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|bigint|null: false, foreign_key: true, index: true|
+|user_id|references|null: false, foreign_key: true, index: true|
 |name|string|null: false|
 |description|text|null: false|
 |category_id|bigint|null: false, foreign_key: true, index: true|
 |brand_id|bigint|null: false, foreign_key: true, index: true|
 |condition_id|bigint|null: false, foreign_key: true, index: true|
-|shipping_fee|integer|null: false|
-|shipping_method|string|null: false|
+|shippingfee_id|bigint|null: false, foreign_key: true, index: true|
 |prefecture_id|bigint|null: false, foreign_key: true, index: true|
-|shipping_day_id|bigint|null: false, foreign_key: true, index: true|
+|shippingday_id|bigint|null: false, foreign_key: true, index: true|
 |price|integer|null: false|
+|status_id|integer|default: "0"|
 
 ### アソシエーション
+  - belongs_to :user
+  - has_many_attached :images, dependent: :destroy
+  - belongs_to_active_hash :category
+  - belongs_to_active_hash :brand
+  - belongs_to_active_hash :condition
+  - belongs_to_active_hash :shippingday
+  - belongs_to_active_hash :prefecture
+  - belongs_to_active_hash :shippingfee
 
-- belongs_to :user
-- has_many :images, dependent: :destroy
-- has_many :comments, dependent: :destroy
-- belongs_to :brand
-- belongs_to :category
-- has_many :likes, dependent: :destroy
-
-## imagesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|item_id|bigint|null: false, foreign_key: true, index: true|
-|item_image|string|null: false|
-
-### アソシエーション
-
-- belongs_to :item
-- belongs_to :user
 
 ## categoriesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|category_name|string|null: false|
+|name|string|null: false|
 
 ### アソシエーション
 
-- has_many :items, dependent: :destroy
+  - has_many :items
 
 ## brandsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|brand_name|string|null: false|
+|name|string|null: false|
 
 ### アソシエーション
 
-- has_many :items, dependent: :destroy
+  - has_many :items
 
-## commentsテーブル
+## conditionテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true, index: true|
-|item_id|references|null: false, foreign_key: true, index: true|
-|body|text|null: false|
+|name|string|null: false|
 
 ### アソシエーション
+　
+  - has_many :items
 
-- belongs_to :user
-- belongs_to :item
-
-## likesテーブル
+## shippingfeeテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true, index: true|
-|item_id|references|null: false, foreign_key: true, index: true|
+|name|string|null: false|
 
 ### アソシエーション
+　
+  - has_many :items
 
-- belongs_to :user
-- belongs_to :item
+## prefectureテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### アソシエーション
+　
+  - has_many :users
+  - has_many :items
+
+## shippingdayテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### アソシエーション
+　
+  - has_many :items
