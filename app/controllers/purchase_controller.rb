@@ -44,10 +44,10 @@ before_action :full_name, only: [:confirmation, :done]
   
   
   private
-  # # # ユーザー情報
-  # def set_user
-  #   @user = User.find(@item.user_id)
-  # end
+  # ユーザー情報
+  def set_user
+    @user = User.find(@item.user_id)
+  end
 
   # カード情報
   def set_card
