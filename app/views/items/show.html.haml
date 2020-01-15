@@ -78,6 +78,7 @@
             商品の編集
           .product-btn-or
             or
+        = link_to suspension_item_path(@item), method: :patch do
           .product-stop-btn 
             出品を一旦停止する
         = link_to "#", method: :delete do

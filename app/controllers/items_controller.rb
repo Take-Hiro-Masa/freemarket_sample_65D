@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:set_user, :edit, :update, :show, :destroy]
+  before_action :set_item, only: [:set_user, :edit, :update, :show, :destroy, :suspension]
   before_action :set_user, only: [:show, :destory]
  
 
@@ -41,6 +41,11 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy if @item.user_id == current_user.id
     redirect_to items_path
+  end
+
+  def suspension
+    @item.update(status_id: 3)
+    redirect_to root_path
   end
 
 private

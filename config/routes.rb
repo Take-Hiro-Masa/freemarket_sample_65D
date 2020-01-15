@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   end
 
 
-  resources :items
+  resources :items do
+    member do
+      patch "suspension"
+    end
+  end
 
   resources :mypage, only: [:index] do
     collection do
