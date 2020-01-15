@@ -7,8 +7,7 @@
       .buy-content__product
         .buy-content__product__inner
           .buy-product-main
-          = @item.images.each do |image|
-            = image_tag image, size: '64x64', class: 'buy-product-image'
+            = image_tag @item.images[0], width: "100×100", class: 'buy-product-main'
             .buy-product-name 
               = @item.name
           .buy-form
@@ -32,11 +31,11 @@
           %h3 配送先
           .user-info-text
             %br
-            〒 #{current_user.postal_code}
+              〒 #{current_user.postal_code}
             %br
-            = @addresses
+              = @user.prefecture.name + @user.city + @user.block + @user.building
             %br
-            = @full_name
+              = @full_name
 
           .user-info-fix
             = link_to "#" do
