@@ -1,3 +1,6 @@
+body{
+  background-color: #f5f5f5;
+}
 .single-container{
   position: relative;
   min-height: 100%;
@@ -11,6 +14,7 @@
 .single-header{
   height: 128px;
   text-align: center;
+ 
 
   &__logo{
     margin: 40px 0 0;
@@ -112,8 +116,9 @@
 }          
 
 .single-footer{
+  background-color: #f5f5f5;
   text-align: center;
-  width: 456px;
+  width: 1440px;
   margin: 0 auto;
   padding: 40px 0;
   .clearfix{

@@ -65,7 +65,7 @@ private
     ).merge(user_id: current_user.id)
   end
 
-  # ユーザー情報
+  # 商品出品ユーザー情報
   def set_user
     @user = User.find(@item.user_id)
   end

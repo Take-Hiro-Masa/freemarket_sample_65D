@@ -6,7 +6,7 @@ class AddNicknameToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :family_name_kana, :string, null: false
     add_column :users, :first_name_kana, :string, null: false
     add_column :users, :phone_tel, :string, null: false, unique: true
-    add_column :users, :postal_code, :integer, null: false
+    add_column :users, :postal_code, :string, null: false
     add_column :users, :city, :string, null: false
     add_column :users, :block, :string, null: false
     add_column :users, :building, :string

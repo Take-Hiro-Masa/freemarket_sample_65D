@@ -1,8 +1,8 @@
 class PurchaseController < ApplicationController
 before_action :authenticate_user!
+before_action :set_user, only: [:pay, :confirmation, :done]
 before_action :set_card, only: [:pay, :confirmation, :done]
 before_action :set_item, only: [:pay, :confirmation, :done]
-before_action :set_address, only: [:confirmation, :done]
 before_action :full_name, only: [:confirmation, :done]
 
   require 'payjp'
@@ -45,9 +45,9 @@ before_action :full_name, only: [:confirmation, :done]
   
   
   private
-  # ユーザー情報
+  # 購入ユーザー情報
   def set_user
-    @user = User.find(@item.user_id)
+    @user = User.find(current_user.id)
   end
 
   # カード情報
@@ -58,11 +58,6 @@ before_action :full_name, only: [:confirmation, :done]
   # 商品情報
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  # ログインユーザーの住所
-  def set_address
-    @address = Prefecture.find(current_user.prefecture_id).name + current_user.city + current_user.block + current_user.building
   end
 
   # ログインユーザーのフルネーム
