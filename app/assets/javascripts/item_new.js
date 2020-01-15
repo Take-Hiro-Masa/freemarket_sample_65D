@@ -51,6 +51,11 @@ $(function() {
         $(".dropzone-area").attr('id', 'nothing');
       }
 
+  //  insert_input  //
+
+      var new_image = $(`<input id="upload-image__btn" class="upload-image" data-image= ${images.length} type="file", name="item[images[]][${images.length}][image]" `);
+      input_area.prepend(new_image);
+  });
 
   //  img_edit_and_destroy  //
 
