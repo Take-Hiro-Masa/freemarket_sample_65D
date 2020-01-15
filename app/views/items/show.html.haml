@@ -76,7 +76,7 @@
         = link_to edit_item_path do
           .product-edit-btn 
             商品の編集
-          .product-btn-or 
+          .product-btn-or
             or
           .product-stop-btn 
             出品を一旦停止する
@@ -92,7 +92,13 @@
           .product-buy-btn-sold 
             売り切れました
     -else
-      redirect_to signup_index_path
+      -if @item.status_id == 0
+        = link_to signup_index_path do
+          .product-buy-btn 
+            購入画面に進む
+      -else
+        .product-buy-btn-sold 
+          売り切れました
     -unless user_signed_in? && @item.user_id == current_user.id  
       .itembuy-detail
         %p.itembuy-detail__inner

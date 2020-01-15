@@ -6,24 +6,26 @@
       商品の情報を入力
     = form_with model: @item, class: 'contents-box__form-list', local:true do |f|
       -# 画像アップロード部分
-      %section.contents-box__form-list__upload-box
-        .contents-box__form-list__upload-box__image-text
+      .sell-upload-box
+        %h3
           出品画像
-        .form-require
-          必須
-        .capture 
-          最大10枚までアップロードできます
-          .dropzone-container.clearfix
-            .sell-uploads-drop
-              #exhibit-images-preview
-            .dropzone-area
-              = f.label :images, for: 'upload-image__btn' do
-                .sell_upload__area
-                  = f.file_field :images, multiple: true, id: 'upload-image__btn', class: 'upload-image', 'data-image': 0, style: 'opacity: 0'
-                  %pre.sell-upload__area___visible-pc
-                    ドラッグアンドドロップ
-                    またはクリックしてファイルをアップロード
-                  %i.fas.fa-camera 
+          %span
+            必須
+        %p
+          最大5枚までアップロードできます
+        .sellbox-form__upload--drop#click-btn
+          .sellbox-form__upload--drop--post
+            .dropzone-container
+              #preview
+              #preview2
+              .dropzone-area
+                = f.label :images, class: "dropzone-box", for: 'upload-image__btn' do
+                  .input__area
+                    = f.file_field :images, multiple: true, id: 'upload-image__btn', class: 'upload-image', 'data-image': 0, type: "file", style: 'opacity: 0'
+                    %pre.sell-upload__area___visible-pc
+                      ドラッグアンドドロップ
+                      またはクリックしてファイルをアップロード
+                    %i.fas.fa-camera 
       -# 商品名、商品説明入力部分
       %section.contents-box__descript-section
         .contents-box__descript-section__item-name
