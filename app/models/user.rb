@@ -6,7 +6,7 @@ class User < ApplicationRecord
   belongs_to_active_hash :birth_mm
   belongs_to_active_hash :birth_yyyy
   belongs_to_active_hash :prefecture
-  has_many :items
-  has_many :cards
+  has_many :items, dependent: :destroy
+  has_many :cards, dependent: :destroy
 
 end
