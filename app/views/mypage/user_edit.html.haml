@@ -1,0 +1,72 @@
+= render 'shared/header'
+
+.logout-side-bar
+  =render 'mypage/sidebar'
+  .l-chapter
+    .l-container
+      .l-content
+        .l-chapter-container
+          %h2.l-chapter-heder 本人情報の登録
+          .l-single-inner
+            .l-single-inner-p
+            = form_with class: 'l-single-form' do |f|
+              .l-single-form-text
+                お客さまの本人情報をご登録ください。
+                %br
+                登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+              .text-right
+                = link_to "/", class: "" do
+                  本人確認書類のアップロードについて
+                  %i.fas.fa-chevron-right
+              .form-group
+                = f.label :zipcode ,'お名前'
+                <br>
+                = current_user.family_name
+                = current_user.first_name
+              .form-group
+                = f.label :zipcode ,'お名前カナ'
+                .sss
+                  = current_user.family_name_kana
+                  = current_user.first_name_kana
+              .form-group
+                = f.label :zipcode ,'誕生日'
+                
+                = "#{current_user.birth_yyyy.year}/#{current_user.birth_mm.month}/#{current_user.birth_dd.day}"
+              .form-group
+                = f.label :zipcode ,'郵便番号'
+                %span 任意
+                = f.text_field :zipcode,class:'input-default',placeholder:'例）123−4567'  
+              
+              .form-group
+                = f.label :prefectures, "都道府県"
+                %span 任意
+                = f.text_field :prefectures,class:'select-default',placeholder:'例）北海道'        
+              .form-group
+                = f.label :zipcode ,'市区町村'
+                %span 任意
+                = f.text_field :zipcode,class:'input-default',placeholder:'例） 横浜市緑区'        
+              .form-group
+                = f.label :zipcode ,'番地'
+                %span 任意
+                = f.text_field :zipcode,class:'input-default',placeholder:'例） 青山1−1−1'        
+              .form-group
+                = f.label :zipcode ,'建物名'
+                %span 任意
+                = f.text_field :zipcode,class:'input-default',placeholder:'例） 柳ビル103'        
+              .btn-default
+                .btn-befalt-center
+                  =link_to "/", class: "btn-befalt-white" do
+                    登録する
+              .form-group
+                .text-right
+                  = link_to "/", class: "text-right" do
+                    本人情報の登録について
+                    %i.fas.fa-chevron-right
+                    
+  =link_to new_item_path(@user), class: 'exhibit_btn' do
+    .exhibit_btn__moji
+      出品
+    %i.fas.fa-camera
+    
+= render 'shared/aside'
+= render 'shared/footer'
