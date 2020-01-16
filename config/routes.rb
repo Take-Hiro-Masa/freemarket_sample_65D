@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cards, only: [:new, :create] 
+  resources :cards, only: [:new, :create] do
+    collection do
+      post "show"
+      post "delete"
+    end
+  end
 
   resources :purchase, only: [:create] do
     member do

@@ -1,0 +1,39 @@
+=render 'shared/header'
+.logout-side-bar
+
+  .card-contents
+    .card-content
+      .card-content-container
+        %h2
+          支払い方法
+        .card-content-inner
+          .card-list__title
+            クレジットカード一覧
+          .cardlist__title__container  
+            .card-user-info-text
+              .card-company-logos
+                = image_tag 'card/visa.jpeg', width: '49', height: '15', alt: 'jcb'
+              .card-information
+                **** **** **** #{@default_card_information.last4}
+                %br
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+              = form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm", class: 'card-user-info-text-button') do
+                %input{ type: "hidden", name: "card_id", value: "" }
+                %button.card-remove 削除する
+
+        .card-content-not-regist
+          = link_to '/', target: '_blank' do
+            %span 支払い方法について
+            = icon 'fas', 'chevron-right'
+
+  =render 'mypage/sidebar'
+
+  =link_to new_item_path(@user), class: 'exhibit_btn' do
+    .exhibit_btn__moji
+      出品
+    %i.fas.fa-camera
+    
+= render 'shared/aside'
+= render 'shared/footer'

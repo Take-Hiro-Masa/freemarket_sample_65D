@@ -11,6 +11,21 @@
             %span
               必須
           %input.signup-main__input-default{type: 'text', name: "number", id: 'number', placeholder: '半角数字のみ', maxlength: '16' }
+          %ul
+            %li 
+              =image_tag "card/visa.png", size: "49x20",alt:"visa"
+            %li 
+              =image_tag "card/master-card.png", size: "34x20",alt:"master-card"
+            %li 
+              =image_tag "card/saison-card.png", size: "30x20",alt:"saison-card"
+            %li 
+              =image_tag "card/JCB_logo.svg.png", size: "32x20",alt:"jcb"
+            %li 
+              =image_tag "card/american_express.png", size: "21x20",alt:"american_express"
+            %li 
+              =image_tag "card/dinersclub.png", size: "32x20",alt:"dinersclub"
+            %li 
+              =image_tag "card/discover.jpeg", size: "32x20",alt:"discover"
         .form-group
           %label
             有効期限
