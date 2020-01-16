@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   resources :mypage, only: [:index] do
     collection do
       get "logout"
+      get "user_edit"
     end
   end
 

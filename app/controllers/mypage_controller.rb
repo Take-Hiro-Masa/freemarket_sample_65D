@@ -1,7 +1,12 @@
 class MypageController < ApplicationController
+
   def index
   end
 
   def logout
   end
-end
+
+  def user_edit
+  end
+
+end 

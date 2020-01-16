@@ -1,0 +1,109 @@
+.logout-side-bar{
+  margin-bottom: 40px;
+}
+.l-chapter{
+  position: absolute;
+  top: 0;
+  float: right;
+}
+.l-container{
+  height: 1500px;
+  width: 1020px;
+}
+
+.l-chapter-container{
+  background: #fff;
+}
+.l-chapter-heder{
+  padding: 8px 24px;
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.text-right{
+  text-align: right;
+  margin-top: 8px;
+  a{
+    display: block;
+    text-align: right;
+    color: #0099e8;
+    font-size:14px;
+  }
+}
+.l-single-inner p {
+  margin: 8px 0 0;
+  line-height: 1.5;
+}
+.l-content{
+  float: right;
+  width: 700px;
+  }
+
+  .l-single-form{
+    padding: 64px;
+    border-top: 1px solid #f5f5f5;
+    font-size: 14px;
+  }
+
+
+  .text-right a{
+    text-align: right;
+  }
+  .form-group{
+    margin-top: 40px;
+    font-size: 14px;
+    label{
+      font-weight:bold;
+    }
+    
+  }
+  .form-group span {
+    background-color: #ccc;
+    color: #fff;
+  }
+  .input-default{
+    width: 100%;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  .select-default{
+    width: 100%;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+
+
+
+.btn-default{
+  margin: 40px 0 0 0;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  width: 100%;
+  line-height: 48px;
+  text-align: center;
+}
+
+
+  .btn-default a{
+    color: #fff;
+  }
+  .aaaaaaaa{
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+    background: #ccc;
+  }
