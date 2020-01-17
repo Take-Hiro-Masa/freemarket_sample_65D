@@ -12,20 +12,7 @@
   .mypage_mypage__content
     %section.mypage_mypage__content__container
       -# ユーザーヘッド
-      .mypage_mypage__content__container__user-head
-        = image_tag '/user-bck_image.jpg', width: "700", height: "200", alt: "" , class: 'mypage_mypage__content__container__user-head__bck'
-        .mypage_mypage__content__container__user-head__box
-          .mypage_mypage__content__container__user-head__box__image
-            = image_tag '/radies_sample1.jpg', width: "60", height: "60", alt: "", class: "mypage_mypage__content__container__user-head__box__image__icon"
-          .mypage_mypage__content__container__user-head__box__nickname
-            -# = current_user.name
-          
-          -# 評価と出品数
-          %ul.mypage_mypage__content__container__user-head__box__numbers
-            %li.mypage_mypage__content__container__user-head__box__numbers__evaluation 
-              評価 20       
-            %li.mypage_mypage__content__container__user-head__box__numbers__put-up 
-              出品数 16
+      =image_tag 'common/profile.png', size: '700×200', class: 'mypage_mypage__content__container__user-head__bck'
 
       -# お知らせ/やることリストタブ
       %ul.mypage_mypage__content__container__upper-list-tabs
