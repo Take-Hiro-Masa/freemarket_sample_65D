@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   end
 
   resources :mypage, only: [:index] do
+    member do
+      get "identification"
+    end
     collection do
       get "logout"
     end

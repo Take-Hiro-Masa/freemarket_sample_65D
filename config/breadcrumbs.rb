@@ -8,6 +8,12 @@ crumb :mypage do
   link "マイページ", mypage_index_path
 end
 
+#  本人情報
+crumb :mypage_identification do
+  link '本人情報の登録'
+  parent :mypage
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
