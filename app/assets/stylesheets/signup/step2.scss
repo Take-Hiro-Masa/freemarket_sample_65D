@@ -75,14 +75,13 @@
         height: 48px;
         padding: 10px 16px 8px;
         border: 1px solid #ccc;
-        // background: #fff;
         font-size: 15px;
         line-height: 1.5;
-        width: calc(50% - 6px);
+        width: 162px;
       }
     }
     &__birthday {
-
+      display: flex;
       select {
         text-align: center;
         border-radius: 5px;
@@ -92,6 +91,9 @@
         border: 1px solid #ccc;
         background: #fff;
         font-size: 16px;
+      }
+      &__unit {
+        padding: 0 2px;
       }
     }
   }
