@@ -3,7 +3,7 @@
 
   .signup__address
     .signup__address__title
-      住所入力
+      発送元・お届け先住所入力
     
     = form_with model: @user, local: true, url: signup_index_path, class: 'signup__address__box', method: 'POST' do |f|
       .signup__address__box__input

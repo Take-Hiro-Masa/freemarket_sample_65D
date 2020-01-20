@@ -30,6 +30,8 @@
           font-size: 14px;
           display: block;
           font-weight: 600;
+          margin-top: 40px;
+
           
           label {
             font-weight: 600;
@@ -64,7 +66,9 @@
         }
         &__attention {
           font-size: 14px;
-          
+          margin-top: 10px;
+          padding-bottom: 45px;
+
           &__user-information { 
             text-align: right;
             margin: 24px 0 0;
