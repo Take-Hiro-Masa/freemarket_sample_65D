@@ -1,8 +1,8 @@
 class PurchaseController < ApplicationController
 before_action :authenticate_user!
-before_action :set_user, only: [:pay, :confirmation, :done]
-before_action :set_card, only: [:pay, :confirmation, :done]
-before_action :set_item, only: [:pay, :confirmation, :done]
+before_action :set_user, only:  [:pay, :confirmation, :done]
+before_action :set_card, only:  [:pay, :confirmation, :done]
+before_action :set_item, only:  [:pay, :confirmation, :done]
 before_action :full_name, only: [:confirmation, :done]
 
   require 'payjp'
@@ -39,10 +39,6 @@ before_action :full_name, only: [:confirmation, :done]
       @default_card_information = customer.cards.retrieve(@card.card_id)
     end
   end
-
-  
-
-  
   
   private
   # 購入ユーザー情報
