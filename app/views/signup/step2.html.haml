@@ -5,7 +5,7 @@
     .info-main__header
       会員情報入力
     .info-main__form
-      = form_with model: @user, local: true, url: step3_signup_index_path, method: 'GET' do |f|
+      = form_with model: @user, local: true, url: step3_signup_index_path, class: "info-main__form__content", method: 'GET' do |f|
         .info-main__form__title
           %label ニックネーム
           %span.info-main__form__require 必須
@@ -26,8 +26,8 @@
           %span.info-main__form__require 必須
           = f.password_field :password, autofocus: true, placeholder:'7文字以上', class: "info-main__form__input"
         
-        .info-main__form__e
-          %h3.info-main__message 本人確認
+        .info-main__message
+          %h3.info-main__message__header 本人確認
           %p.info-main__message__main 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
         
         .info-main__form__title
@@ -47,20 +47,20 @@
         .info-main__form__title
           %label 生年月日
           %span.info-main__form__require 必須
-          .info-main__form__birthday
-            = f.collection_select :birth_yyyy_id, BirthYyyy.all, :id, :year, name: 'year', prompt: '--', class: "info-main__form__birthday__in"
-            年
-            = f.collection_select :birth_mm_id, BirthMm.all, :id, :month, name: 'month', prompt: '--', class: "info-main__form__birthday__in"
-            月
-            = f.collection_select :birth_dd_id, BirthDd.all, :id, :day, name: 'day', prompt: '--', class: "info-main__form__birthday__in"
-            日
-          %p.form__info__text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-      
+        .info-main__form__birthday
+          = f.collection_select :birth_yyyy_id, BirthYyyy.all, :id, :year, name: 'year', prompt: '--', class: "info-main__form__birthday__in"
+          年
+          = f.collection_select :birth_mm_id, BirthMm.all, :id, :month, name: 'month', prompt: '--', class: "info-main__form__birthday__in"
+          月
+          = f.collection_select :birth_dd_id, BirthDd.all, :id, :day, name: 'day', prompt: '--', class: "info-main__form__birthday__in"
+          日
+        %p.form__info__text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+    
         %div
           %p.info-main__message__main2
             「次へ進む」のボタンを押すことにより、
             =link_to "#", class:"info-main__message__main2__link" do
-              利用規約
+              利用規約</a>
               に同意したものとみなします
           
         = f.submit "次へ進む", class: "info-main__message__main2__btn"

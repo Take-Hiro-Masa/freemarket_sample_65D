@@ -1,7 +1,11 @@
 = render 'shared/header'
+.bread_crumbs
+  .bread_crumbs__line
+  - breadcrumb :user_edit
+  = render "layouts/breadcrumbs"
 
 .logout-side-bar
-  =render 'mypage/sidebar'
+  
   .l-chapter
     .l-container
       .l-content
@@ -62,6 +66,8 @@
                   = link_to "/", class: "text-right" do
                     本人情報の登録について
                     %i.fas.fa-chevron-right
+
+  =render 'mypage/sidebar'
                     
   =link_to new_item_path(@user), class: 'exhibit_btn' do
     .exhibit_btn__moji

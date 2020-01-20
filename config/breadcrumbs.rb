@@ -8,9 +8,21 @@ crumb :mypage do
   link "マイページ", mypage_index_path
 end
 
-# crumb :projects do
-#   link "Projects", projects_path
-# end
+crumb :logout do
+  link "ログアウト", logout_mypage_index_path
+  parent :mypage
+end
+
+crumb :user_edit do
+  link "本人情報", user_edit_mypage_index_path
+  parent :mypage
+end
+
+crumb :show do
+  link "支払い方法", cards_path
+  parent :mypage
+end
+
 
 # crumb :project do |project|
 #   link project.name, project_path(project)

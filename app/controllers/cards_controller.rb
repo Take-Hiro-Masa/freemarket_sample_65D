@@ -8,7 +8,7 @@ class CardsController < ApplicationController
 
   def create
     if params['payjp-token'].blank?
-      redirect_to action: "new"
+      redirect_to new_card_path
     else
       customer = Payjp::Customer.create(
         card: params['payjp-token']
@@ -16,10 +16,12 @@ class CardsController < ApplicationController
       @card = Card.new(
         user_id: current_user.id,
         customer_id: customer.id,
-        card_id: customer.default_card
+        card_id: customer.default_card,
+        # token: params['payjp-token']
         )
       if @card.save
-        redirect_to root_path
+        redirect_to step6_signup_index_path
+        # redirect_to root_path
       else
         redirect_to action: "create"
       end
