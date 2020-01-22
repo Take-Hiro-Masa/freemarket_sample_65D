@@ -14,7 +14,7 @@
         .profile-main__content-icon
           .profile-main__content-icon__img
             = image_tag 'common/member_photo_noimage.png', width: "60", height: "60"
-          = f.text_field :nickname, type: "text", class: "profile-main__content-icon__name", placeholder: current_user.nickname
+          = f.text_field :nickname, type: "text", class: "profile-main__content-icon__name", value: current_user.nickname
         .profile-main__content-text
           = f.text_area :text, class: "profile-main__content-text__textarea", placeholder: "例) こんにちは。ご覧いただきありがとうございます!かわいいものやきれいめきれいめオフィスカジュアル中心に出品してます。ご質問などございましたらお気軽にどうぞ♪"
           = f.submit "変更する", class: "profile-main__content-text__button"
