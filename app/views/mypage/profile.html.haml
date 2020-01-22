@@ -1,0 +1,30 @@
+= render 'shared/header'
+.bread_crumbs
+  .bread_crumbs__line
+  - breadcrumb :profile
+  = render "layouts/breadcrumbs"
+
+.logout-side-bar
+
+  .profile-main
+    = form_with model:@user,local: true, method: 'post' do |f|
+      .profile-main__content
+        %h2.profile-main__content-head
+          プロフィール
+        .profile-main__content-icon
+          .profile-main__content-icon__img
+            = image_tag 'common/member_photo_noimage.png', width: "60", height: "60"
+          = f.text_field :nickname, type: "text", class: "profile-main__content-icon__name", placeholder: current_user.nickname
+        .profile-main__content-text
+          = f.text_area :text, class: "profile-main__content-text__textarea", placeholder: "例) こんにちは。ご覧いただきありがとうございます!かわいいものやきれいめきれいめオフィスカジュアル中心に出品してます。ご質問などございましたらお気軽にどうぞ♪"
+          = f.submit "変更する", class: "profile-main__content-text__button"
+
+  =render 'mypage/sidebar'
+                    
+  =link_to new_item_path(@user), class: 'exhibit_btn' do
+    .exhibit_btn__moji
+      出品
+    %i.fas.fa-camera
+    
+= render 'shared/aside'
+= render 'shared/footer'
