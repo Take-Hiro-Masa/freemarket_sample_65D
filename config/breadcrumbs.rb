@@ -23,6 +23,11 @@ crumb :show do
   parent :mypage
 end
 
+crumb :profile do
+  link "プロフィール", profile_mypage_index_path
+  parent :mypage
+end
+
 
 # crumb :project do |project|
 #   link project.name, project_path(project)

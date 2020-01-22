@@ -9,4 +9,6 @@ class MypageController < ApplicationController
   def user_edit
   end
 
+  def profile
+  end
 end 

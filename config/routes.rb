@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     collection do
       get "logout"
       get "user_edit"
+      get "profile"
     end
   end
 
