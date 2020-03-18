@@ -19,12 +19,21 @@
               #preview
               #preview2
               .dropzone-area
+                - @item.images.each do |image|
+                  %li.sell-main-upload
+                    =image_tag image
+                    .sell-main-upload__btn
+                      %span.sell-main-upload__btn__edit
+                        編集
+                      %span.sell-main-upload__btn__delete
+                        削除
                 = f.label :images, class: "dropzone-box", for: 'upload-image__btn' do
                   .input__area
-                    = f.file_field :images, multiple: true, id: 'upload-image__btn', class: 'upload-image', 'data-image': 0, type: "file", style: 'opacity: 0'
-                    %pre.sell-upload__area___visible-pc
-                      ドラッグアンドドロップ
-                      またはクリックしてファイルをアップロード
+                    %div.input_area__img
+                      = f.file_field :images, multiple: true, id: 'upload-image__btn', class: 'upload-image', 'data-image': 0, type: "file"
+                      %pre.sell-upload__area___visible-pc
+                        ドラッグアンドドロップ
+                        またはクリックしてファイルをアップロード
       -# 商品名、商品説明入力部分
       %section.contents-box__descript-section
         .contents-box__descript-section__item-name
@@ -131,3 +140,4 @@
         = link_to root_path, class:'btn-default btn-gray' do
           もどる
 =render "signup/footer"
+
