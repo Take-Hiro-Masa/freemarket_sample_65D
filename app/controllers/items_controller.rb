@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
 
 
   def edit
+    @item.images.detach
   end
 
   def update

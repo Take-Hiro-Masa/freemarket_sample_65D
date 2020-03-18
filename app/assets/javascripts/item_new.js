@@ -65,9 +65,11 @@ $(function() {
       if ($(this).data('image') == target_image.data('image')){
         $(this).remove();
         target_image.remove();
+
         var num = $(this).data('image');
         images.splice(num, 1);
         inputs.splice(num, 1);
+                                    
         if(inputs.length == 0) {
           $('input[type= "file"].upload-image').attr({
             'data-image': 0
@@ -102,8 +104,38 @@ $(function() {
   /// img-delete-btn
   $(document).on('click', '.sell-main-upload__btn__delete', function() {
     var target_image = $(this).parent().parent();
-    $(this).remove();
-    target_image.remove();
+      if ($(this).data('image') == target_image.data('image')){
+        $(this).remove();
+        target_image.remove();
+        var num = $(this).data('image');
+        images.splice(num, 1);
+        inputs.splice(num, 1);
+        if(inputs.length == 0) {
+          $('input[type= "file"].sell-main-upload').attr({
+            'data-image': 0
+          })
+        }
+      }
+    $('input[type= "file"].sell-main-upload').attr({
+      'data-image': inputs.length
+    })
+    $.each(inputs, function(index, input) {
+      var input = $(this)
+      input.attr({
+        'data-image': index
+      })
+      $('input[type= "file"].sell-main-upload').after(input)
+    })
+    dropzone.css({
+      'display': 'block'
+    })
+    $.each(images, function(index, image) {
+      image.attr('data-image', index);
+      preview.append(image);
+    })
+    dropzone.css({
+      'width': `calc(100% - (120px * ${images.length}))`
+    })
   })
   
   // 価格入力時に、手数料、利益計算
