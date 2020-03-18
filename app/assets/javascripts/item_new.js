@@ -96,6 +96,15 @@ $(function() {
       'width': `calc(100% - (120px * ${images.length}))`
     })
   })
+
+
+
+  /// img-delete-btn
+  $(document).on('click', '.sell-main-upload__btn__delete', function() {
+    var target_image = $(this).parent().parent();
+    $(this).remove();
+    target_image.remove();
+  })
   
   // 価格入力時に、手数料、利益計算
   $('#sell_center').on('keyup', function(){

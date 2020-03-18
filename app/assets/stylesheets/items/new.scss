@@ -147,6 +147,39 @@ body{
               font-size: 0;
               text-align: center;
               cursor: pointer;
+           
+              .sell-main-upload{
+                display: inline-block;
+                float: left;
+                img {
+                  padding-top:20px;
+                  position: static;
+                  height: 114px;
+                  width: 116px;
+                  overflow: hidden;
+                }
+                &__btn{
+                  margin-top:20px;
+                  font-size: 14px;
+                  display: flex;
+                  width: 100%;
+                  &__edit{
+                    display: inline-block;
+                    line-height: 32px;
+                    width: 50%;
+                    text-align: center;  
+                    color: #0099e8;
+                  }
+                  &__delete{
+                    display: inline-block;
+                    line-height: 32px;
+                    width: 50%;
+                    text-align: center;  
+                    color: #0099e8;
+                    border-left: 1px solid #eee;
+                  }
+                }
+              }
               .dropzone-box{
                 padding: 0;
                 width: 100%;
@@ -162,7 +195,7 @@ body{
                     cursor: pointer;
                     height: 162px;
                   }
-                  
+                          
                 }
                 pre {
                   position: absolute;
